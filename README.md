@@ -11,7 +11,7 @@ Nyash requires Ruby to run. You can install Ruby via [RVM](https://rvm.io/) or [
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/nyash.git
+   git clone https://github.com/SysFugy/nyash.git
    cd nyash
    ```
    
