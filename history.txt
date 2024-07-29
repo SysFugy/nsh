@@ -1,0 +1,13 @@
+qw
+ls
+greet meow
+exit
+e
+dwq
+greet meow
+qw
+clear
+ewqe
+color.rb 
+ruby color.rb 
+cat history.txt 
