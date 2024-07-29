@@ -21,12 +21,6 @@ Nyash requires Ruby to run. You can install Ruby via [RVM](https://rvm.io/) or [
    bash install.sh
    ```
 
-### Usage
-
-    ```bash
-    nyash
-    ```
-
 ### Configuration
 
 Configuration and functions are defined in the ~/.config/nyash/nyashrc.rb file. You can edit this file to add new functions or configure variables.
