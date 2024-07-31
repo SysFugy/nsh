@@ -22,18 +22,28 @@ def logCmd(command)
   end
 end
 
+# Change directory
+def change_directory(dir)
+  if Dir.exist?(dir)
+    Dir.chdir(dir)
+  else
+    puts "nyash: cd: #{dir}: No such file or directory"
+  end
+end
+
 # 'Snippet'
 def completeCommand(input)
   currentInput = input.chomp
-  if currentInput.empty?
-    dir = Dir.pwd
-    entries = Dir.entries(dir).select { |f| !File.directory?(File.join(dir, f)) }
-    entries.sort
-  else
-    dir = Dir.pwd
-    entries = Dir.entries(dir).select { |f| f.start_with?(currentInput) && !File.directory?(File.join(dir, f)) }
-    entries.sort
+  dir = Dir.pwd
+
+  # Files list
+  entries = Dir.entries(dir).select do |entry|
+    fullPath = File.join(dir, entry)
+    entry.start_with?(currentInput) && !File.symlink?(fullPath)
   end
+
+  # Sort result
+  entries.sort
 end
 
 Readline.completion_proc = proc { |input| completeCommand(input) }
@@ -45,7 +55,7 @@ loop do
   break if input.nil?
   next if input.empty?
   logCmd(input)
-  
+
   command, *args = input.split
   next if command.nil?
 
@@ -55,8 +65,12 @@ loop do
     helloWorld
   when "exit"
     break
+  when "cd"
+    dir = args.join(' ') 
+    dir = File.expand_path(dir)
+    change_directory(dir)
   else
-    if respond_to?(command, true) # Call functions from config
+    if respond_to?(command, true)
       send(command, *args)
     else
       executable = findBin(command)
@@ -64,9 +78,8 @@ loop do
         pid = spawn(executable, *args)
         Process.wait(pid)
       else
-        puts "nyash: #{command}: No such file or directory *><"
+        puts "nyash: #{command}: Cannot execute this *><"
       end
     end
   end
 end
-  
