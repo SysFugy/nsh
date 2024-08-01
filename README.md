@@ -1,4 +1,4 @@
-# Nyash Shell
+# Nyash Shell v1.2 (!STILL IN DEVELOPEMENT!)
 
 Nyash is a minimalist shell written in Ruby. It supports basic command-line functionality, bugged autocompletion, and extensibility through user-defined functions.
 
