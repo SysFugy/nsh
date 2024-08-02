@@ -1,10 +1,12 @@
-# Nyash Shell v1.2 (!STILL IN DEVELOPEMENT!)
+# NyaShell v2.0 Recoded (Still in developement)
 
-Nyash is a minimalist shell written in Ruby. It supports basic command-line functionality, bugged autocompletion, and extensibility through user-defined functions.
+Nsh is a minimalist shell written in C. It supports basic command-line functionality, custom modules and unicode. There is no command history or auto-completion yet, but it will be soon...
 
 ### Dependencies
 
-Nyash requires Ruby to run. You can install Ruby via [RVM](https://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv).
+- gcc
+- bash
+- nasm
 
 ### Installation Steps
 
@@ -18,14 +20,15 @@ Nyash requires Ruby to run. You can install Ruby via [RVM](https://rvm.io/) or [
 2. **Run the installation script:**
 
    ```bash
-   bash install.sh
+   bash build.sh
    ```
 
-### Configuration
+### Custom modules
 
-Configuration and functions are defined in the ~/.config/nyash/nyashrc.rb file. You can edit this file to add new functions or configure variables.
+Custom modules are located in the "lib" directory. To create your own, you can follow the example of the ready-made "hello.c" module
 
+To compile ours together with our module, you need to add the "-modules" option, and then specify the directory to your .c file:
 
-## More info
-
-This project is just a template, with minimal copyright, so you can modify this code if you want, or add your own module
+   ```bash
+   bash build.sh -modules lib/hello.c
+   ```
