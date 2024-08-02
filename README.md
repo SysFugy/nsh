@@ -40,5 +40,5 @@ To compile ours together with our module, you need to add the **"-modules"** opt
 You can call module using **"call"** command in the shell:
 
    ```bash
-   call hello SysFugy!
+   call hello SysFugy
    ```
